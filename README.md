@@ -17,7 +17,7 @@ height assigned to it.
 
 This has mainly been made possible by the following Python packages and binaries:  
 
-- [Startin](https://github.com/hugoledoux/startin_python)
+- [Startinpy](https://github.com/hugoledoux/startinpy)
 - [las2las](https://rapidlasso.com/lastools/las2las/)
 - [rasterio](https://rasterio.readthedocs.io/en/latest/)
 - [shapely](https://shapely.readthedocs.io/en/latest/manual.html)
@@ -29,13 +29,27 @@ This has mainly been made possible by the following Python packages and binaries
 ## Usage
 
 The tool is made to run an amount of threads in parallel to ensure fast processing. Please note that each thread needs
-around 20GB of memory to run. Optimizations can be made if memory use for quadrant-based IDW is reduced, and/or for Startin.
+around 20GB of memory to run. Optimizations can be made if memory use for quadrant-based IDW is reduced, and/or for Startinpy.
 
 1. Install all packages specified in [requirements.txt](requirements.txt)
 1. Configure your settings in the [config.ini](config.ini)
     1. Global parameters and folder paths are essential to change
     1. Further parameters are optimized for use with AHN3 dataset
 1. Run main.py
+
+## Usage (docker)
+
+1. Build
+
+```bash
+docker build -t tudelft3d/geo1101.2020.ahn3:latest .
+```
+
+1. Run
+
+```bash
+docker run -it --rm tudelft3d/geo1101.2020.ahn3:latest bash
+```
 
 ## Documentation and help
 Read the full documentation at [http://geo11012020ahn3.rtfd.io/](http://geo11012020ahn3.rtfd.io/)
@@ -50,7 +64,7 @@ methods that can be used to replace the ones featured here, and also contains in
 The chosen interpolation methods in this repository have been proven to provide the best results for our datasets, and are
 the most robust encountered.
 
-For DTM a Laplace interpolation is used based on Startin's Delaunay Triangulation, which in turn is based on Rust, making
+For DTM a Laplace interpolation is used based on Startinpy's Delaunay Triangulation, which in turn is based on Rust, making
 it extremely fast to execute.
 
 For DSM a quadrant-based IDW is used, which is implemented in Python. This method is limited by the amount of raster cells

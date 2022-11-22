@@ -5,7 +5,7 @@ import time
 import traceback
 
 import rasterio
-import startin
+import startinpy
 
 import numpy as np
 
@@ -42,7 +42,7 @@ class Interpolation:
         self._raster = None
         self._las_data = None
 
-        self._tin = startin.DT()
+        self._tin = startinpy.DT()
 
         # [[minx, maxx], [miny, maxy]]
         self._extents = [[tile_bounds[0], tile_bounds[2]], [tile_bounds[1], tile_bounds[3]]]
@@ -86,7 +86,7 @@ class Interpolation:
                 self._do_pre_processing()
 
                 if self._stage == Stages.INTERPOLATED_DTM:
-                    interpolation_success = self._startin_laplace()
+                    interpolation_success = self._startinpy_laplace()
 
                 else:
                     interpolation_success = self._quad_idw()
@@ -183,7 +183,7 @@ class Interpolation:
 
         print(self._raster)
 
-    def _startin_laplace(self):
+    def _startinpy_laplace(self):
         """Takes the grid parameters and the ground points. Interpolates using Laplace method.
         """
         print('\n{0}: Starting Laplace'.format(

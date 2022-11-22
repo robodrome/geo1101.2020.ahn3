@@ -40,7 +40,7 @@ class Flatten:
         :param origin: List containing the coordinates of the top left corner of the raster
         :param res: List containing the x and y resolution of the raster
         :param raster: Numpy array containing the content of the raster (x, y, z)
-        :param tin: startin.DT() object containing all relevant LAS points for interpolating values of polygons
+        :param tin: startinpy.DT() object containing all relevant LAS points for interpolating values of polygons
         :param extents: List containing the extents of the raster as [[minx, maxx], [miny, maxy]]
         :return: Numpy array containing raster with flattened areas where polygons were found
         """

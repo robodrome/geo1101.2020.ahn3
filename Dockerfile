@@ -14,9 +14,10 @@ SHELL ["/bin/bash", "-c"]
 # Copy applications files
 COPY --chown=$MYUSER:$MYUSER ./src ./src
 COPY --chown=$MYUSER:$MYUSER environment.yml .
-COPY --chown=$MYUSER:$MYUSER config.ini .
 
 RUN mamba env create -f environment.yml
+
+COPY --chown=$MYUSER:$MYUSER config.ini .
 
 RUN echo "source activate geo1101ahn3" >> ~/.bashrc && \
     eval "$(conda shell.bash hook)" && \

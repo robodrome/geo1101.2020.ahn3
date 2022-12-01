@@ -51,6 +51,11 @@ docker build -t tudelft3d/geo1101.2020.ahn3:latest .
 docker run -it --rm tudelft3d/geo1101.2020.ahn3:latest bash
 ```
 
+Or in docker container:
+```bash
+docker run -it --rm -v geo1101-data:/home/geo1101/data tudelft3d/geo1101.2020.ahn3:latest bash
+```
+
 ## Documentation and help
 Read the full documentation at [http://geo11012020ahn3.rtfd.io/](http://geo11012020ahn3.rtfd.io/)
 
